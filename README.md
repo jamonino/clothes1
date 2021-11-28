@@ -39,9 +39,10 @@ Crear la API REST/JSON de una web de comercio electrónico para venta de ropa ll
 
 **clothes/user**
 
-* POST - Compra y resta stock (si no hay stock response code 0) **2P**
+* POST - POST - Simula una compra de un producto y resta stock del mismo (si no hay stock suficiente devuelve responseCode -1) **2P**
 
 **clothes/user/{gender}**
+
 * GET - Lista con al menos un elemento en stock del género aportado en la ruta **1P**
 
 ## BBDD
@@ -177,7 +178,7 @@ No consume nada y produce un JSON del objeto Response con responseCode = 1 y la 
       "price":1200,
       "stock":4,
       "gender":2
-    },
+    }
   ]
 }
 ```
@@ -210,6 +211,57 @@ Consume un JSON de un producto y produce un JSON del objeto Response con respons
   "responseCode":1
 }
 ```
+
+### clothes/user**
+
+* POST - Simula una compra de un producto y resta stock del mismo (si no hay stock suficiente devuelve responseCode -1) **2P** (De los 2 puntos, 1 punto consiste en la posibilidad de especificar la cantidad que se compra. Si se opta por no especificar la cantidad, simplemente se resta un producto si el stock es distinto de 0)
+
+Consume un JSON de un producto y produce un JSON del objeto Response con responseCode = 1 o -1 dependiendo de si ha podido restar la cantidad comprada al stock (1) o no quedaba stock suficiente y no resta nada (-1).
+
+```js
+{
+  "id":4,
+  "quantity":2
+}
+```
+<-- RESPONSE
+```js
+{
+  "responseCode":1 / -1
+}
+```
+
+**clothes/user/{gender}**
+
+* GET - Lista los productos con al menos un elemento en stock del género aportado en la ruta **1P**
+
+Por parámetro de ruta se pasa el género por el que queremos filtrar. Produce un objeto Response con responseCode = 1 y una lista de productos con el género especificado y con al menos un elemento en stock.
+
+<-- RESPONSE
+```js
+{
+  "responseCode":1,
+  "products":[
+    {
+      "name":"corbata",
+      "price":2900,
+      "stock":8,
+      "gender":1
+    },
+    {
+      "name":"bufanda",
+      "price":1200,
+      "stock":4,
+      "gender":1
+    }
+  ]
+}
+```
+
+<br />
+<div align="center">
+  <h1 align="center">¡Mucho ánimo!</h3>
+</div>
 
 
 
