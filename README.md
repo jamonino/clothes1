@@ -212,7 +212,7 @@ Consume un JSON de un producto y produce un JSON del objeto Response con respons
 }
 ```
 
-### clothes/user**
+### clothes/user
 
 * POST - Simula una compra de un producto y resta stock del mismo (si no hay stock suficiente devuelve responseCode -1) **2P** (De los 2 puntos, 1 punto consiste en la posibilidad de especificar la cantidad que se compra. Si se opta por no especificar la cantidad, simplemente se resta un producto si el stock es distinto de 0)
 
