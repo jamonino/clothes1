@@ -168,12 +168,14 @@ No consume nada y produce un JSON del objeto Response con responseCode = 1 y la 
   "responseCode":1,
   "products":[
     {
+      "id":1,
       "name":"corbata",
       "price":2900,
       "stock":8,
       "gender":1
     },
     {
+      "id":2,
       "name":"bufanda",
       "price":1200,
       "stock":4,
@@ -243,12 +245,14 @@ Por parámetro de ruta se pasa el género por el que queremos filtrar. Produce u
   "responseCode":1,
   "products":[
     {
+      "id":1,
       "name":"corbata",
       "price":2900,
       "stock":8,
       "gender":1
     },
     {
+      "id":2,
       "name":"bufanda",
       "price":1200,
       "stock":4,
