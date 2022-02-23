@@ -39,8 +39,8 @@ public class UserService {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @PathParam("/{gender}")
-    public Response getProducts(@PathParam("token") int gender){
+    @Path("/{gender}")
+    public Response getProducts(@PathParam("gender") int gender){
         Response response = new Response();
         try{
             Db myDb = new Db();
