@@ -9,6 +9,7 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import java.sql.SQLException;
@@ -38,12 +39,13 @@ public class UserService {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getProducts(){
+    @PathParam("/{gender}")
+    public Response getProducts(@PathParam("token") int gender){
         Response response = new Response();
         try{
             Db myDb = new Db();
             myDb.connect();
-            List<Product> products = Product.selectAllProducts_DB(myDb);
+            List<Product> products = Product.selectAllProductsGender_DB(myDb,gender);
             myDb.disconnect();
             response.setProducts(products);
             response.setResponseCode(ResponseCodes.OK);

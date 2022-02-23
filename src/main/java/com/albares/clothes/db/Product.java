@@ -134,8 +134,35 @@ public class Product {
             products.add(product);
         }
         return products;
+    }
     
-    
+    public static List selectAllProductsGender_DB(Db myDb,int gender) throws SQLException{
+        PreparedStatement ps = myDb.prepareStatement(
+                    "SELECT id,name,price,stock,gender FROM products WHERE gender = ?;"
+            );
+        ps.setInt(1, gender);
+        ResultSet rs = myDb.executeQuery(ps);
+        List<Product> products = new ArrayList();
+        
+        while(rs.next()){
+            /*Product product = new Product(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getInt("price"),
+                    rs.getInt("stock"),
+                    rs.getInt("gender")
+            );*/
+            
+            Product product = new Product(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getInt(3),
+                    rs.getInt(4),
+                    rs.getInt(5)
+            );
+            products.add(product);
+        }
+        return products;
     }
 
     public int buyProduct_DB(Db myDb) throws SQLException {
